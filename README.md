@@ -1,13 +1,12 @@
 Simple flask app to show auth0 authentication
 
-==== To configure ====
+#### To configure ####
 ```
 cp config.py-dist config.py
 <edit file with relevant information>
 ```
 
-==== To run ====
-
+#### To run ####
 You can run this with docker by running the following command
 
 ```
