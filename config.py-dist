@@ -1,0 +1,5 @@
+# You can get this information when you set up your auth0 client
+CLIENT_ID=""
+CLIENT_SECRET=""
+DOMAIN=""
+CALLBACK_URL=""

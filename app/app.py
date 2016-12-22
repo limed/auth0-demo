@@ -36,6 +36,7 @@ def requires_auth(f):
 
     return decorated
 
+# The default landing page
 @app.route('/')
 def home():
     return render_template('index.html', env=os.environ)
@@ -45,6 +46,7 @@ def home():
 def dashboard():
     return render_template('dashboard.html', user=session['profile'])
 
+# This code is provided by auth0 when you set up the client
 @app.route("/callback")
 def callback():
     code = request.args.get('code')
@@ -54,11 +56,11 @@ def callback():
     token_url = "https://{domain}/oauth/token".format(domain=app.config["DOMAIN"])
 
     token_payload = {
-            'client_id':     app.config["CLIENT_ID"],
-            'client_secret': app.config["CLIENT_SECRET"],
-            'redirect_uri':  app.config["CALLBACK_URL"],
-            'code':          code,
-            'grant_type':    'authorization_code'
+        'client_id':     app.config["CLIENT_ID"],
+        'client_secret': app.config["CLIENT_SECRET"],
+        'redirect_uri':  app.config["CALLBACK_URL"],
+        'code':          code,
+        'grant_type':    'authorization_code'
     }
 
     token_info = requests.post(token_url, data=json.dumps(token_payload), headers = json_header).json()
