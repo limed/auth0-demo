@@ -2,6 +2,7 @@ from functools import wraps
 from dotenv import load_dotenv
 
 from flask import Flask, redirect, render_template, request, session, jsonify, send_from_directory
+from flask_wtf.csrf import CsrfProtect
 
 import os
 import json
@@ -9,6 +10,7 @@ import requests
 import config
 
 app = Flask(__name__)
+csrf = CsrfProtect()
 app.config.from_pyfile('config.py')
 app.debug = True
 
@@ -78,4 +80,5 @@ def callback():
     return redirect('/dashboard')
 
 if __name__ == '__main__':
+    csrf.init_app(app)
     app.run(host='0.0.0.0', port=8080)

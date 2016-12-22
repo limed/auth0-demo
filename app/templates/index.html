@@ -1,4 +1,5 @@
 <script src="https://cdn.auth0.com/js/lock/10.6/lock.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script>
   var CLIENT_ID = '{{ env.CLIENT_ID }}';
   var DOMAIN = '{{ env.DOMAIN }}';
