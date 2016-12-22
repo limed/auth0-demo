@@ -1,0 +1,17 @@
+<script src="https://cdn.auth0.com/js/lock/10.6/lock.min.js"></script>
+<script>
+  var CLIENT_ID = '{{ env.CLIENT_ID }}';
+  var DOMAIN = '{{ env.DOMAIN }}';
+  var CALLBACK_URL = '{{ env.CALLBACK_URL }}';
+  var lock = new Auth0Lock( CLIENT_ID, DOMAIN, {
+    auth: {
+      redirectUrl: CALLBACK_URL,
+      responseType: 'code',
+      params: {
+        scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+      }
+    }
+  });
+</script>
+<h2> Login here please! </h2>
+<button onclick="lock.show();">Login</button>
